@@ -1,18 +1,29 @@
-/* This file maps your route matches
- * to functions defined in various
- * controller classes
- */
-app = module.parent.exports.app;
+module.exports = function(app,pool)
+{
+    /* This file maps your route matches
+     * to functions defined in various
+     * controller classes
+     */
 
-/* require your controllers here */
-var indexController = require('./controllers/index');
-// var adminController = require('./controllers/admin');
 
-/* Put routes here */
+    ensureAuthenticated = function(req, res, next) {
+      if (req.session.username) {
+        return next();
+      }
+      return res.redirect("/login");
+    };
 
-// main site routes
-app.get('/', indexController.index);
-app.get('/login', indexController.login);
+    /* require your controllers here */
+    var indexController = require('./controllers/index')(pool);
+    // var adminController = require('./controllers/admin');
 
-// admin routes
-// app.get('/admin', adminController.admin);
+    /* Put routes here */
+
+    // main site routes
+    app.get('/', indexController.index);
+    app.get('/login', indexController.login);
+
+    // admin routes
+    // app.get('/admin', adminController.admin);
+
+}
