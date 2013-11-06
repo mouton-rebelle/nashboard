@@ -1,24 +1,18 @@
-// app = module.parent.exports.app;
-/*
- * GET home page.
- */
-exports.index = function(req, res){
-    var pool = require('../database').pool;
-
-    pool.getConnection(function(err,connection)
+module.exports = function(app,db)
+{
+    app.get('/', function(req, res, next)
     {
-        console.log(err);
-        connection.query('SELECT * FROM TIM_DAU_Loc WHERE language="pt" AND region="BR"',function(err,rows)
+        db.getConnection(function(err,connection)
         {
-            res.render('index', { title: 'Nashboard', daus:rows });
+            connection.query('SELECT * FROM TIM_DAU_Loc WHERE language="pt" AND region="BR"',function(err,rows)
+            {
+                connection.release();
+                res.render('index', { title: 'Nashboard', daus:rows });
+            });
         });
-
     });
-};
 
-/*
- * GET login page.
- */
-exports.login = function(req, res){
-  res.render('login', { title: 'Nashboard' });
+    app.get('/login',function(req, res){
+        res.render('login', { title: 'Nashboard' });
+    });
 };

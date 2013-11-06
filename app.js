@@ -40,4 +40,4 @@ http.createServer(app).listen(app.get('port'), function(){
 });
 
 
-routes = require('./routes')(app,pool);
+var indexController = require('./controllers/index')(app,pool);
