@@ -10,6 +10,11 @@ var express = require('express'),
 
 var app = express();
 
+var pool = require('mysql').createPool(require('./config').databases.STATS_DAU_MAU);
+pool.on('connection',function(err){
+    console.log('MYSQL CONNECTED');
+});
+
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
@@ -34,9 +39,5 @@ http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-/*
- * Exports the express app for other modules to use
- * all route matches go the routes.js file
- */
-module.exports.app = app;
-routes = require('./routes');
+
+routes = require('./routes')(app,pool);
