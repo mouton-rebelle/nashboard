@@ -5,6 +5,7 @@
 
 var express = require('express'),
     exphbs  = require('express3-handlebars'),
+    moment = require('moment'),
     http = require('http'),
     path = require('path');
 
@@ -15,10 +16,25 @@ pool.on('connection',function(err){
     console.log('MYSQL CONNECTED');
 });
 
+hbs = exphbs.create({
+    defaultLayout: 'main',
+    // Specify helpers which are only registered on this instance.
+    helpers: {
+        formatDate: function (datetime, format) {
+            return moment(datetime).format(format);
+        },
+        json: function(obj) {
+            return JSON.stringify(obj);
+        }
+    }
+});
+
+
+
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use(express.favicon());
 app.use(express.logger('dev'));

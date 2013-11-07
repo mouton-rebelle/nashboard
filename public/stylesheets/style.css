@@ -1,3 +1,6 @@
-a {
-  color: #00B7FF;
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
 }
