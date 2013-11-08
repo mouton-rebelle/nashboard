@@ -23,6 +23,13 @@ hbs = exphbs.create({
         formatDate: function (datetime, format) {
             return moment(datetime).format(format);
         },
+        formatNumber: function(num)
+        {
+            var p = num+'';
+            return p.split("").reverse().reduce(function(acc, num, i, orig) {
+              return  num + (i && !(i % 3) ? "," : "") + acc;
+            }, "");
+        },
         json: function(obj) {
             return JSON.stringify(obj);
         }
@@ -55,5 +62,8 @@ http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
+livereload = require('livereload');
+server = livereload.createServer();
+server.watch(__dirname + "/public");
 
 var indexController = require('./controllers/index')(app,pool);

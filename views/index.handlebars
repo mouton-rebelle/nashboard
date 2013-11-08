@@ -1,15 +1,23 @@
 <div class="row">
     <div class="col-md-12">
 
+        <h2>
+            <span id="date">{{formatDate daus.0.date "MMMM Do"}}</span> :
+            <span class="total"><span id="total">{{formatNumber daus.0.total }}</span> users</span>
+            (<span class="new">+ <span id="new">{{formatNumber daus.0.created }}</span></span>) /
+            <span class="dau"><span id="dau">{{formatNumber daus.0.actif }}</span> DAUs</span>
+        </h2>
+        <p>(shipped devices + users on one of TIM's network / days are in the GMT timezone)</p>
+
         <div class="graph">
 
         </div>
 
         <script>
-            // var data = {{{json daus}}};
+            var data = {{{json daus}}};
         </script>
         <script>
-            var data = [{"date":"2013-11-06T00:00:00.000Z","actif":11931,"total":45866,"created":2293},{"date":"2013-11-05T00:00:00.000Z","actif":10789,"total":43427,"created":1464},{"date":"2013-11-04T00:00:00.000Z","actif":10120,"total":41857,"created":732},{"date":"2013-11-03T00:00:00.000Z","actif":9665,"total":41018,"created":756},{"date":"2013-11-02T00:00:00.000Z","actif":9367,"total":40159,"created":743},{"date":"2013-11-01T00:00:00.000Z","actif":9510,"total":39320,"created":670},{"date":"2013-10-31T00:00:00.000Z","actif":9842,"total":38533,"created":791},{"date":"2013-10-30T00:00:00.000Z","actif":9692,"total":37654,"created":721},{"date":"2013-10-29T00:00:00.000Z","actif":9859,"total":36866,"created":779},{"date":"2013-10-28T00:00:00.000Z","actif":9946,"total":35995,"created":787},{"date":"2013-10-27T00:00:00.000Z","actif":9331,"total":35147,"created":885},{"date":"2013-10-26T00:00:00.000Z","actif":8980,"total":34256,"created":851},{"date":"2013-10-25T00:00:00.000Z","actif":9380,"total":33394,"created":883},{"date":"2013-10-24T00:00:00.000Z","actif":9148,"total":32489,"created":848},{"date":"2013-10-23T00:00:00.000Z","actif":9304,"total":31636,"created":820},{"date":"2013-10-22T00:00:00.000Z","actif":9363,"total":30813,"created":809},{"date":"2013-10-21T00:00:00.000Z","actif":9368,"total":29994,"created":916},{"date":"2013-10-20T00:00:00.000Z","actif":8930,"total":29057,"created":1037},{"date":"2013-10-19T00:00:00.000Z","actif":8370,"total":28007,"created":868},{"date":"2013-10-18T00:00:00.000Z","actif":8554,"total":27125,"created":814},{"date":"2013-10-17T00:00:00.000Z","actif":8465,"total":26298,"created":776},{"date":"2013-10-16T00:00:00.000Z","actif":8478,"total":25517,"created":756},{"date":"2013-10-15T00:00:00.000Z","actif":8289,"total":24761,"created":669},{"date":"2013-10-14T00:00:00.000Z","actif":8156,"total":24089,"created":518},{"date":"2013-10-13T00:00:00.000Z","actif":7594,"total":23560,"created":438},{"date":"2013-10-12T00:00:00.000Z","actif":7274,"total":23117,"created":381},{"date":"2013-10-11T00:00:00.000Z","actif":7731,"total":22733,"created":465},{"date":"2013-10-10T00:00:00.000Z","actif":7707,"total":22263,"created":481},{"date":"2013-10-09T00:00:00.000Z","actif":7679,"total":21773,"created":407},{"date":"2013-10-08T00:00:00.000Z","actif":7647,"total":21356,"created":446},{"date":"2013-10-07T00:00:00.000Z","actif":7664,"total":20915,"created":396},{"date":"2013-10-06T00:00:00.000Z","actif":7303,"total":20509,"created":419},{"date":"2013-10-05T00:00:00.000Z","actif":6889,"total":20084,"created":351},{"date":"2013-10-04T00:00:00.000Z","actif":7156,"total":19735,"created":205},{"date":"2013-10-03T00:00:00.000Z","actif":7249,"total":19528,"created":156},{"date":"2013-10-02T00:00:00.000Z","actif":7183,"total":19368,"created":150},{"date":"2013-10-01T00:00:00.000Z","actif":7198,"total":19216,"created":167}];
+            // var data = [{"date":"2013-11-07T00:00:00.000Z","actif":12184,"total":47899,"created":1924},{"date":"2013-11-06T00:00:00.000Z","actif":11931,"total":45866,"created":2293},{"date":"2013-11-05T00:00:00.000Z","actif":10789,"total":43427,"created":1464},{"date":"2013-11-04T00:00:00.000Z","actif":10120,"total":41857,"created":732},{"date":"2013-11-03T00:00:00.000Z","actif":9665,"total":41018,"created":756},{"date":"2013-11-02T00:00:00.000Z","actif":9367,"total":40159,"created":743},{"date":"2013-11-01T00:00:00.000Z","actif":9510,"total":39320,"created":670},{"date":"2013-10-31T00:00:00.000Z","actif":9842,"total":38533,"created":791},{"date":"2013-10-30T00:00:00.000Z","actif":9692,"total":37654,"created":721},{"date":"2013-10-29T00:00:00.000Z","actif":9859,"total":36866,"created":779},{"date":"2013-10-28T00:00:00.000Z","actif":9946,"total":35995,"created":787},{"date":"2013-10-27T00:00:00.000Z","actif":9331,"total":35147,"created":885},{"date":"2013-10-26T00:00:00.000Z","actif":8980,"total":34256,"created":851},{"date":"2013-10-25T00:00:00.000Z","actif":9380,"total":33394,"created":883},{"date":"2013-10-24T00:00:00.000Z","actif":9148,"total":32489,"created":848},{"date":"2013-10-23T00:00:00.000Z","actif":9304,"total":31636,"created":820},{"date":"2013-10-22T00:00:00.000Z","actif":9363,"total":30813,"created":809},{"date":"2013-10-21T00:00:00.000Z","actif":9368,"total":29994,"created":916},{"date":"2013-10-20T00:00:00.000Z","actif":8930,"total":29057,"created":1037},{"date":"2013-10-19T00:00:00.000Z","actif":8370,"total":28007,"created":868},{"date":"2013-10-18T00:00:00.000Z","actif":8554,"total":27125,"created":814},{"date":"2013-10-17T00:00:00.000Z","actif":8465,"total":26298,"created":776},{"date":"2013-10-16T00:00:00.000Z","actif":8478,"total":25517,"created":756},{"date":"2013-10-15T00:00:00.000Z","actif":8289,"total":24761,"created":669},{"date":"2013-10-14T00:00:00.000Z","actif":8156,"total":24089,"created":518},{"date":"2013-10-13T00:00:00.000Z","actif":7594,"total":23560,"created":438},{"date":"2013-10-12T00:00:00.000Z","actif":7274,"total":23117,"created":381},{"date":"2013-10-11T00:00:00.000Z","actif":7731,"total":22733,"created":465},{"date":"2013-10-10T00:00:00.000Z","actif":7707,"total":22263,"created":481},{"date":"2013-10-09T00:00:00.000Z","actif":7679,"total":21773,"created":407},{"date":"2013-10-08T00:00:00.000Z","actif":7647,"total":21356,"created":446},{"date":"2013-10-07T00:00:00.000Z","actif":7664,"total":20915,"created":396},{"date":"2013-10-06T00:00:00.000Z","actif":7303,"total":20509,"created":419},{"date":"2013-10-05T00:00:00.000Z","actif":6889,"total":20084,"created":351},{"date":"2013-10-04T00:00:00.000Z","actif":7156,"total":19735,"created":205},{"date":"2013-10-03T00:00:00.000Z","actif":7249,"total":19528,"created":156},{"date":"2013-10-02T00:00:00.000Z","actif":7183,"total":19368,"created":150},{"date":"2013-10-01T00:00:00.000Z","actif":7198,"total":19216,"created":167}];
         </script>
         <table class="table table-striped">
             <thead>
@@ -17,6 +25,7 @@
                     <th>Day</th>
                     <th>New users</th>
                     <th>DAUs</th>
+                    <th>Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +34,7 @@
                     <td>{{formatDate date "DD/MM/YY"}}</td>
                     <td>{{created}}</td>
                     <td>{{actif}}</td>
+                    <td>{{total}}</td>
                 </tr>
                 {{/each}}
             </tbody>

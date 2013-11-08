@@ -4,3 +4,43 @@
   stroke: black;
   shape-rendering: crispEdges;
 }
+.tooltip {
+  background: #fafafa;
+  border: 1px solid #545454;
+  color: #232323;
+  width: 100px;
+  border-radius: 2px;
+}
+.tooltip strong {
+  display: block;
+  background: #ffffff;
+  text-align: center;
+  border-bottom: 1px solid #545454;
+  padding: 3px 5px;
+  margin-bottom: 4px;
+}
+.tooltip p,
+.tooltip ul,
+.tooltip li {
+  padding: 0;
+  margin: 0;
+}
+.tooltip li {
+  list-style-position: inside;
+  padding: 0 5px 3px 5px;
+}
+.new,
+.bars-new {
+  color: #7bb94c;
+  fill: #7bb94c;
+}
+.bars-dau,
+.dau {
+  color: #87a8b9;
+  fill: #87a8b9;
+}
+.bars-total,
+.total {
+  color: #cecece;
+  fill: #cecece;
+}

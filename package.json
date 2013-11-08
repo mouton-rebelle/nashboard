@@ -11,5 +11,8 @@
     "mysql": "*",
     "less-middleware": "*",
     "moment": "~2.4.0"
+  },
+  "devDependencies": {
+    "livereload": "~0.3.2"
   }
 }
