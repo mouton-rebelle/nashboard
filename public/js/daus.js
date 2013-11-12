@@ -1,6 +1,6 @@
 var sizes = {
   big:{
-    width:920,
+    width:800,
     height:460,
     margins:{
       top: 20,
@@ -22,6 +22,20 @@ function formatNumber(num)
 }
 
 $(document).on('ready',function(){
+
+  $('.daterange').daterangepicker(
+    {
+      format    : 'YYYY-MM-DD',
+      opens     : 'left',
+      minDate   : '2013-10-01',
+      maxDate   : moment(),
+      startDate : moment().subtract('months', 1),
+      endDate : moment().subtract('months', 1)
+    },
+    function(start, end) {
+      alert('A date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+    }
+  );
 
   // ==========================================================
   // SVG ROOT ELEMENT
@@ -213,7 +227,7 @@ $(document).on('ready',function(){
     var nd = new Date();
     nd.setTime(currentTick.getTime());
     fixedTimeTicks.push(nd);
-    currentTick.setDate(currentTick.getDate()+2);
+    currentTick.setDate(currentTick.getDate()+3);
   }
 
   var xAxis = d3.svg.axis()

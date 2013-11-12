@@ -8,11 +8,20 @@
             <span class="dau"><span id="dau">{{formatNumber daus.0.actif }}</span> DAUs</span>
         </h2>
         <p>(shipped devices + users on one of TIM's network / days are in the GMT timezone)</p>
+    </div>
+</div>
+<div class="row">
+    <div class="graph col-md-9">
 
-        <div class="graph">
-
-        </div>
-
+    </div>
+    <div class="graph col-md-3">
+        <form action="" id="filters">
+            <div class="form-group">
+                <label for="period" class="control-label">Period </label>
+                <input type="text" class="form-control daterange" id="period" name="period" />
+            </div>
+        </form>
+    </div>
         <script>
             var data = {{{json daus}}};
         </script>
